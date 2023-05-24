@@ -1,6 +1,4 @@
-#include "general.h"
-#include "main.h"
-#include "text.h"
+#include "shell.h"
 
 /**
  * start - Handle the mode

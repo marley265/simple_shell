@@ -1,7 +1,4 @@
-#include "commands.h"
-#include "general.h"
-#include "memory.h"
-#include "text.h"
+#include "shell.h"
 
 /**
  * analyze_patterns - Entry Point

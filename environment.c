@@ -1,10 +1,6 @@
-#include "commands.h"
-#include "general.h"
-#include "text.h"
-#include <string.h>
-#include <sys/cdefs.h>
+#include "shell.h"
+#include <stdlib.h>
 #include <unistd.h>
-
 /**
  * _getenv - Get a environment variable
  *
@@ -15,13 +11,14 @@
  **/
 char *_getenv(const char *name)
 {
-	char **env;
+	char **env, environ;
 	char *aux, *token, *value;
 	int size;
 
 	size = _strlen((char *) name);
+	**env = environ;
 
-	for (env = environ; *env; ++env)
+	for (; *env; ++env)
 	{
 		aux = _strdup(*env);
 
@@ -125,12 +122,13 @@ void is_current_path(char *path, general_t *info)
  **/
 void get_full_env(void)
 {
-	char **tmp;
-	int i;
+        char **temp;
+        int i;
 
-	for (i = 0, tmp = environ; tmp[i] != NULL; i++)
-	{
-		print(tmp[i]);
-		_putchar('\n');
-	}
+	**temp = environ;
+        for (i = 0; temp[i] != NULL; i++)
+        {
+                print(temp[i]);
+                _putchar('\n');
+        }
 }

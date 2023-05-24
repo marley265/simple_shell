@@ -1,6 +1,4 @@
-#include "builtins.h"
-#include "general.h"
-
+#include "shell.h"
 /**
  * bin_exit - Implementation of the exit builtin
  * Description: Free all the memory used and

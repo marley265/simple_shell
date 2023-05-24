@@ -1,6 +1,4 @@
-#include "general.h"
-#include "main.h"
-
+#include "shell.h"
 /**
  * main - Entry Point
  * @argc: number of arguments received

@@ -1,6 +1,4 @@
-#include "general.h"
-#include "text.h"
-#include "commands.h"
+#include "shell.h"
 
 /**
  * replacement - Entry point

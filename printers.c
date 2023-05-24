@@ -1,7 +1,4 @@
-#include "general.h"
-#include "text.h"
-#include <unistd.h>
-
+#include "shell.h"
 /**
  * _putchar_to_fd - Print a character to a specific file
  * descriptor

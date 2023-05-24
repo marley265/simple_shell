@@ -1,5 +1,4 @@
-#include "commands.h"
-#include "general.h"
+#include "shell.h"
 
 /**
  * is_executable - Check if a filename have permissions

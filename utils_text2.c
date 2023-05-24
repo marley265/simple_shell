@@ -1,6 +1,4 @@
-#include "general.h"
-#include "text.h"
-
+#include "shell.h"
 /**
  * digits - Cout the numbe of digits of a number
  *

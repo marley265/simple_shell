@@ -1,7 +1,4 @@
-#include "text.h"
-#include "commands.h"
-#include "general.h"
-#include "memory.h"
+#include "shell.h"
 
 /**
  * prompt - Print the prompt
@@ -19,7 +16,7 @@ void prompt(general_t *info)
 /**
  * read_prompt - Read lines in the prompt
  *
- * Return: Buffer readed or NULL if EOF was found
+ * Return: Buffer read or NULL if EOF was found
  **/
 char *read_prompt()
 {
@@ -45,7 +42,7 @@ char *read_prompt()
  *
  * @info: Struct of general information
  *
- * Return: Buffer readed or NULL if EOF was found
+ * Return: Buffer read or NULL if EOF was found
  **/
 void start_prompt(general_t *info)
 {
@@ -93,6 +90,7 @@ void start_prompt(general_t *info)
  * sigintHandler - Handler for SIGINT
  *
  * @sig_num: Unused parameter
+ *Return: Nothing
  **/
 void sigintHandler(int sig_num)
 {

@@ -1,4 +1,4 @@
-#include "memory.h"
+#include "shell.h"
 
 /**
  * _realloc - Reallocates a memory block using malloc and free
@@ -7,7 +7,7 @@
  * @old_size: Size, in bytes, of the allocated space for ptr
  * @new_size: New size, in bytes of the new memory block
  *
- * Return: Memory reallocated
+ * Return: reallocated memory(s)
  **/
 void *_realloc(void *ptr, size_t old_size, size_t new_size)
 {

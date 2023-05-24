@@ -1,6 +1,4 @@
-#include "general.h"
-#include "text.h"
-
+#include "shell.h"
 /**
  * _putchar - Print a character to STDOUT
  *

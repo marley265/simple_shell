@@ -55,4 +55,4 @@ typedef struct __attribute__((__packed__))
 	void (*func)(general_t *info, char **arguments);
 } builtin_t;
 
-#endif /* GENERAL_H */
+#endif

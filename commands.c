@@ -1,9 +1,4 @@
-#include "commands.h"
-#include "builtins.h"
-#include "general.h"
-#include "memory.h"
-#include "text.h"
-
+#include "shell.h"
 /**
  * analyze - Analyze	the arguments
  *

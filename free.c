@@ -1,9 +1,9 @@
-#include "memory.h"
+#include "shell.h"
 
 /**
  * free_memory_p - Free a pointer
- *
- * @ptr: Pointer to free
+ *@ptr: Pointer to free
+ *Return: Nothing
  **/
 void free_memory_p(void *ptr)
 {
@@ -18,8 +18,8 @@ void free_memory_p(void *ptr)
 
 /**
  * free_memory_pp - Free a double pointer
- *
- * @ptr: Double pointer to free
+ *@ptr: Double pointer to free
+ *Return: Nothing
  **/
 void free_memory_pp(void **ptr)
 {
