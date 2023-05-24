@@ -22,6 +22,7 @@ int number_controller(general_t *info, char *number);
 
 /* env.c */
 void bin_env(general_t *info, char **arguments);
+extern char *environ[];
 
 /* echo.c */
 void bin_echo(general_t *info, char **arguments);

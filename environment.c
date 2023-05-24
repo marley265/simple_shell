@@ -11,12 +11,11 @@
  **/
 char *_getenv(const char *name)
 {
-	char **env, environ;
+	char **env = environ;
 	char *aux, *token, *value;
 	int size;
 
 	size = _strlen((char *) name);
-	**env = environ;
 
 	for (; *env; ++env)
 	{
@@ -122,10 +121,9 @@ void is_current_path(char *path, general_t *info)
  **/
 void get_full_env(void)
 {
-        char **temp;
+        char **temp = environ;
         int i;
 
-	**temp = environ;
         for (i = 0; temp[i] != NULL; i++)
         {
                 print(temp[i]);
