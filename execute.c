@@ -12,38 +12,38 @@
  **/
 void execute(char *command, char **arguments, general_t *info, char *buff)
 {
-        int status;
-        pid_t pid;
+	int status;
+	pid_t pid;
 
-        pid = fork();
-        if (pid < 0)
-        {
-                perror("fork");
-                exit(1);
-        }
-        else if (pid == 0)
-        {
-                execve(command, arguments, environ);
-                perror("./sh");
+	pid = fork();
+	if (pid < 0)
+	{
+		perror("fork");
+		exit(1);
+	}
+	else if (pid == 0)
+	{
+		execve(command, arguments, environ);
+		perror("./sh");
 
-                free_double_pointer((void *) arguments);
+		free_double_pointer((void *) arguments);
 
-                if (info->value_path != NULL)
-                {
-                        free(info->value_path);
-                        info->value_path = NULL;
-                }
+		if (info->value_path != NULL)
+		{
+			free(info->value_path);
+			info->value_path = NULL;
+		}
 
-                free(info);
-                free(buff);
-                exit(1);
-        }
-        else
-        {
-                waitpid(pid, &status, 0);
-                if (WIFEXITED(status))
-                        info->status_code = WEXITSTATUS(status);
-        }
+		free(info);
+		free(buff);
+		exit(1);
+	}
+	else
+	{
+		waitpid(pid, &status, 0);
+		if (WIFEXITED(status))
+			info->status_code = WEXITSTATUS(status);
+	}
 }
 
 /**

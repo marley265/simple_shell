@@ -64,7 +64,7 @@ char *which(char *filename, general_t *info)
 
 	path = _getenv("PATH");
 	if (path == NULL)
-		return(NULL);
+		return (NULL);
 
 	token = strtok(path, ":");
 
@@ -119,12 +119,12 @@ void is_current_path(char *path, general_t *info)
  **/
 void get_full_env(void)
 {
-        char **temp = environ;
-        int i;
+	char **temp = environ;
+	int i;
 
-        for (i = 0; temp[i] != NULL; i++)
-        {
-                print(temp[i]);
-                _putchar('\n');
-        }
+	for (i = 0; temp[i] != NULL; i++)
+	{
+		print(temp[i]);
+		_putchar('\n');
+	}
 }

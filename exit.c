@@ -22,7 +22,7 @@ void bin_exit(general_t *info, char **arguments)
 
 	free_pointer((void *) info->buffer);
 	free_pointer((void *) info->environment);
-        free_pointer((void *) info);
+	free_pointer((void *) info);
 	free_double_pointer((void **) arguments);
 
 	exit(status_code);

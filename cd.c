@@ -14,7 +14,7 @@ void bin_cd(general_t *info, char **arguments)
 		target_dir = _getenv("HOME");
 
 	result = chdir(target_dir);
-	if(result == 0)
+	if (result == 0)
 	{
 		info->status_code = 0;
 	}
@@ -23,9 +23,10 @@ void bin_cd(general_t *info, char **arguments)
 		perror("cd");
 		info->status_code = -1;
 	}
-      	free_pointer((void *)info->environment);
+
+	free_pointer((void *)info->environment);
 	free_pointer((void *)info->buffer);
 	free_double_pointer((void **)arguments);
 
-	return;
+;
 }

@@ -6,8 +6,8 @@
  **/
 void bin_env(general_t *info, char **arguments)
 {
-        (void) arguments;
-        (void) info;
+	(void) arguments;
+	(void) info;
 
-        get_full_env();
+	get_full_env();
 }
