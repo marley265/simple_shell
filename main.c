@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * main - Entry Point
+ * main - Entry Point of the simple_shell
  * @argc: number of arguments received
  * @argv: arguments received
  * Return: 0

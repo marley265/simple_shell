@@ -1,9 +1,8 @@
 #include "shell.h"
-
 /**
- * prompt - Print the prompt
- *
- * @info: Struct of general information
+ * prompt - Print the shell prompt
+ * @info: Struct of general shell information
+ *Return: Nothing
  **/
 void prompt(general_t *info)
 {
@@ -14,35 +13,32 @@ void prompt(general_t *info)
 }
 
 /**
- * read_prompt - Read lines in the prompt
- *
+ * read_prompt - reads the command passed to the shell
  * Return: Buffer read or NULL if EOF was found
  **/
 char *read_prompt()
 {
-	char *buf;
-	int res;
+	char *buffer;
+	int read;
 	size_t size;
 
-	buf = NULL;
+	buffer = NULL;
 
-	res = getline(&buf, &size, stdin);
+	read = getline(&buffer, &size, stdin);
 
-	if (res == EOF)
+	if (read == EOF)
 	{
-		free_memory_p((void *) buf);
+		free_pointer((void *) buffer);
 		return (NULL);
 	}
 
-	return (buf);
+	return (buffer);
 }
 
 /**
- * start_prompt - Loop reading text
- *
- * @info: Struct of general information
- *
- * Return: Buffer read or NULL if EOF was found
+ * start_prompt - Loops through the text, reading each line
+ * @info: Struct of general shell information
+ * Return: Read buffer
  **/
 void start_prompt(general_t *info)
 {
@@ -77,19 +73,18 @@ void start_prompt(general_t *info)
 			analyze_patterns(info, arguments);
 			analyze(arguments, info, buff);
 
-			free_memory_pp((void *) arguments);
+			free_double_pointer((void *) arguments);
 		}
 
-		free_memory_p((void *) buff);
-		free_memory_p((void *) path);
+		free_pointer((void *) buff);
+		free_pointer((void *) path);
 	}
 
 }
 
 /**
  * sigintHandler - Handler for SIGINT
- *
- * @sig_num: Unused parameter
+ * @sig_num: assigned signal number
  *Return: Nothing
  **/
 void sigintHandler(int sig_num)

@@ -20,6 +20,9 @@ int check_builtin(general_t *info, char **arguments);
 void bin_exit(general_t *info, char **arguments);
 int number_controller(general_t *info, char *number);
 
+/* cd.c */
+void bin_cd(general_t *info, char **arguments);
+
 /* env.c */
 void bin_env(general_t *info, char **arguments);
 extern char *environ[];
@@ -52,9 +55,10 @@ char *message_selector(general_t info);
 void error(general_t *info);
 void error_extra(general_t *info, char *extra);
 
+/* free.c */
+void free_pointer(void *ptr);
+void free_double_pointer(void **ptr);
 /* memory.c */
-void free_memory_pp(void **ptr);
-void free_memory_p(void *ptr);
 void *_realloc(void *ptr, size_t old_size, size_t new_size);
 
 /* text.c */

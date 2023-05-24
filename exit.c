@@ -20,22 +20,21 @@ void bin_exit(general_t *info, char **arguments)
 
 	status_code = info->status_code;
 
-	free_memory_pp((void **) arguments);
-	free_memory_p((void *) info->buffer);
-	free_memory_p((void *) info->environment);
-	free_memory_p((void *) info);
+	free_pointer((void *) info->buffer);
+	free_pointer((void *) info->environment);
+        free_pointer((void *) info);
+	free_double_pointer((void **) arguments);
 
 	exit(status_code);
 }
 
 /**
- * number_controller - Control the argument of exit
+ * number_controller - Checks the exit arguments
  *
  * @info: General information about the shell
- * @number: Argument of the builtin
+ * @number: The builtin argument passed
  *
- * Return: If the actual argument is valid, return _TRUE
- * if not, return _FALSE
+ * Return: if arg is valid(_TRUE). Else(_FALSE)
  **/
 int number_controller(general_t *info, char *number)
 {
@@ -46,7 +45,7 @@ int number_controller(general_t *info, char *number)
 	if (_number < 0 || contains_letter(number))
 	{
 		info->status_code = 2;
-		info->error_code = _CODE_ILLEGAL_NUMBER;
+		info->error_code = ERROR_CODE_INVALID_NUMBER;
 		error_extra(info, number);
 		return (_FALSE);
 	}

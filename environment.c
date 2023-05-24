@@ -1,65 +1,62 @@
 #include "shell.h"
-#include <stdlib.h>
-#include <unistd.h>
 /**
- * _getenv - Get a environment variable
- *
+ * _getenv - Get the environment variable
  * @name: Environment variable to get
- *
- * Return: On success value of @name
- * On error, NULL
+ * Return: On success (value of name) else (NULL)
  **/
 char *_getenv(const char *name)
 {
 	char **env = environ;
-	char *aux, *token, *value;
+	char *temp;
+	char *token;
+	char *value;
 	int size;
 
 	size = _strlen((char *) name);
 
 	for (; *env; ++env)
 	{
-		aux = _strdup(*env);
+		temp = _strdup(*env);
 
-		token = strtok(aux, "=");
+		token = strtok(temp, "=");
 		if (token == NULL)
 		{
-			free(aux);
+			free(temp);
 			return (NULL);
 		}
 
 		if (_strlen(token) != size)
 		{
-			free(aux);
+			free(temp);
 			continue;
 		}
 
-		if (_strcmp((char *) name, aux) == 0)
+		if (_strcmp((char *) name, temp) == 0)
 		{
 			token = strtok(NULL, "=");
 			value = _strdup(token);
 
-			free(aux);
+			free(temp);
 			return (value);
 		}
 
-		free(aux);
+		free(temp);
 	}
 
 	return (NULL);
 }
 
 /**
- * which - Find the directory needed
- *
+ * which - Finds the requested directory
  * @filename: Command received
- * @info: General info about the shell
- *
- * Return: pointer string with found path or NULL in failure.
+ * @info: General info about the shell (from general_t)
+ * Return: on success (string pointer to reqested path) else (NULL)
  */
 char *which(char *filename, general_t *info)
 {
-	char *path, *tmp_path, *token;
+	char *path;
+	char *temp_path;
+	char *token;
 	char *slash;
 	int size;
 
@@ -67,7 +64,7 @@ char *which(char *filename, general_t *info)
 
 	path = _getenv("PATH");
 	if (path == NULL)
-		return (NULL);
+		return(NULL);
 
 	token = strtok(path, ":");
 
@@ -78,19 +75,19 @@ char *which(char *filename, general_t *info)
 
 	while (token != NULL)
 	{
-		tmp_path = malloc(_strlen(token) + size);
-		tmp_path = _strcpy(tmp_path, token);
-		tmp_path = _strcat(tmp_path, slash);
+		temp_path = malloc(_strlen(token) + size);
+		temp_path = _strcpy(temp_path, token);
+		temp_path = _strcat(temp_path, slash);
 
-		if (is_executable(tmp_path) == PERMISSIONS)
+		if (is_executable(temp_path) == PERMISSIONS)
 		{
 			free(slash);
 			free(path);
-			return (tmp_path);
+			return (temp_path);
 		}
 		token = strtok(NULL, ":");
 
-		free(tmp_path);
+		free(temp_path);
 	}
 
 	free(path);
@@ -100,10 +97,10 @@ char *which(char *filename, general_t *info)
 }
 
 /**
- * is_current_path -	Check the order of the path
- *
+ * is_current_path - checks and gives the current path
  * @path: PATH to check
- * @info: General infor about the shell
+ * @info: General information about the shell (from general_t)
+ *Return: Nothing
  **/
 void is_current_path(char *path, general_t *info)
 {
@@ -117,7 +114,8 @@ void is_current_path(char *path, general_t *info)
 }
 
 /**
- * get_full_env - Get all the environment
+ * get_full_env - returns the full path
+ *Return: Nothing
  **/
 void get_full_env(void)
 {

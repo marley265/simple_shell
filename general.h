@@ -17,15 +17,16 @@
 #define _FILE            10
 #define NON_FILE         -10
 
-#define _ENOENT          "No such file or directory"
-#define _EACCES          "Permission denied"
-#define _CMD_NOT_EXISTS  "not found"
-#define _ILLEGAL_NUMBER  "Illegal number"
+#define ERROR_MSG_NO_FILE            "File or directory not found"
+#define ERROR_MSG_PERMISSION         "Access denied"
+#define ERROR_MSG_CMD_NOT_FOUND      "Command does not exist"
+#define ERROR_MSG_INVALID_NUMBER     "Invalid numeric value"
 
-#define _CODE_ENOENT           3
-#define _CODE_EACCES           13
-#define _CODE_CMD_NOT_EXISTS   132
-#define _CODE_ILLEGAL_NUMBER   133
+#define ERROR_CODE_NO_FILE            3
+#define ERROR_CODE_PERMISSION         13
+#define ERROR_CODE_CMD_NOT_FOUND      132
+#define ERROR_CODE_INVALID_NUMBER     133
+
 typedef struct __attribute__((__packed__))
 {
 	int argc;                 /* Number of arguments received */
@@ -46,7 +47,7 @@ typedef struct __attribute__((__packed__))
 typedef struct __attribute__((__packed__))
 {
 	char *message;            /* Error message */
-	int code;                 /* Error code for identify the error message */
+	int code;                /* Error code for identify the error message */
 } error_t;
 
 typedef struct __attribute__((__packed__))

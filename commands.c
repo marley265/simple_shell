@@ -1,10 +1,11 @@
 #include "shell.h"
 /**
- * analyze - Analyze	the arguments
- *
- * @arguments: Commands and arguments to execute
- * @info: General information about the shell
+ * analyze - checks if the shell should run in interactive
+ *or non-interactive mode
+ * @arguments: Commands to execute
+ * @info: General information about the shell (from general_t)
  * @buff: Line readed
+ *Return: Nothing
  **/
 void analyze(char **arguments, general_t *info, char *buff)
 {
@@ -23,7 +24,7 @@ void analyze(char **arguments, general_t *info, char *buff)
 	if (status == NON_PERMISSIONS)
 	{
 		info->status_code = 126;
-		info->error_code = _CODE_EACCES;
+		info->error_code = ERROR_CODE_PERMISSION;
 		error(info);
 		return;
 	}
@@ -41,11 +42,11 @@ void analyze(char **arguments, general_t *info, char *buff)
 	if (info->value_path != NULL)
 	{
 		execute(info->value_path, arguments, info, buff);
-		free_memory_p((void *) info->value_path);
+		free_pointer((void *) info->value_path);
 		return;
 	}
 
 	info->status_code = 127;
-	info->error_code = _CODE_CMD_NOT_EXISTS;
+	info->error_code = ERROR_CODE_CMD_NOT_FOUND;
 	error(info);
 }

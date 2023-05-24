@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * free_memory_p - Free a pointer
+ *free_pointer - Free a (single) pointer allocated memory
  *@ptr: Pointer to free
  *Return: Nothing
  **/
-void free_memory_p(void *ptr)
+void free_pointer(void *ptr)
 {
 	if (ptr != NULL)
 	{
@@ -17,16 +17,16 @@ void free_memory_p(void *ptr)
 }
 
 /**
- * free_memory_pp - Free a double pointer
+ * free_double_pointer - Free a double pointer allocated mem space
  *@ptr: Double pointer to free
  *Return: Nothing
  **/
-void free_memory_pp(void **ptr)
+void free_double_pointer(void **ptr)
 {
-	void **tmp;
+	void **temp;
 
-	for (tmp = ptr; *tmp != NULL; tmp++)
-		free_memory_p(*tmp);
+	for (temp = ptr; *temp != NULL; temp++)
+		free_pointer(*temp);
 
-	free_memory_p(ptr);
+	free_pointer(ptr);
 }

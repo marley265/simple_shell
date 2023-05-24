@@ -65,7 +65,7 @@ char *replace_value(general_t *info, int *index, char *string)
 	string = _realloc(string, old_s, new_s);
 	string = _strcpy(string, value);
 
-	free_memory_p(value);
+	free_pointer(value);
 	*index = i;
 	return (string);
 }

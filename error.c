@@ -1,19 +1,17 @@
 #include "shell.h"
 /**
  * message_selector - Select the message that match with the error_code
- *
  * @info: General information about the shell
- *
  * Return: Error message
  **/
 char *message_selector(general_t info)
 {
 	int i, n_options;
 	error_t messages[] = {
-		{_ENOENT, _CODE_ENOENT},
-		{_EACCES, _CODE_EACCES},
-		{_CMD_NOT_EXISTS, _CODE_CMD_NOT_EXISTS},
-		{_ILLEGAL_NUMBER, _CODE_ILLEGAL_NUMBER}
+		{ERROR_MSG_NO_FILE, ERROR_CODE_NO_FILE},
+		{ERROR_MSG_PERMISSION, ERROR_CODE_PERMISSION},
+		{ERROR_MSG_CMD_NOT_FOUND, ERROR_CODE_CMD_NOT_FOUND},
+		{ERROR_MSG_INVALID_NUMBER, ERROR_CODE_INVALID_NUMBER}
 	};
 
 	n_options = sizeof(messages) / sizeof(messages[0]);

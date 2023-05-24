@@ -2,12 +2,9 @@
 
 /**
  * builtins - Check and execute the builtins
- *
  * @info: Information about the shell
- * @arguments: Commands and arguments
- *
- * Return: If the command passed is a builtins
- * return _TRUE if not return _FALSE
+ * @arguments: Commands passed as arguments
+ * Return: if command is builtin (_TRUE) else (_FALSE)
  **/
 int builtins(general_t *info, char **arguments)
 {
@@ -22,21 +19,18 @@ int builtins(general_t *info, char **arguments)
 
 
 /**
- * check_builtin - Check if the actual command is a builtin_t
- * or not
- *
- * @info: General information about the shell
- * @arguments: Arguments of the command
- *
- * Return: If the command is an actual builtin, return _TRUE
- * if not _FALSE
+ * check_builtin - Checks if passed command is an inbuilt command
+ * @info: Contains general shell info. (from general_t)
+ * @arguments: Arguments of the passed command
+ * Return: if command is builtin (_TRUE) else (_FALSE)
  **/
 int check_builtin(general_t *info, char **arguments)
 {
 	int i, size;
 	builtin_t builtins[] = {
 		{"exit", bin_exit},
-		{"env", bin_env}
+		{"env", bin_env},
+		{"cd", bin_cd}
 	};
 
 	size = sizeof(builtins) / sizeof(builtins[0]);
