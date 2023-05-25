@@ -9,8 +9,13 @@
 #include <stdlib.h>
 #include "general.h"
 
+#define LINE_BUFSIZE 1024;
+
 /* Entry point of the shell */
 void start(general_t *info);
+
+/* readline.c */
+char *_getline(void);
 
 /* builtins.c */
 int builtins(general_t *info, char **arguments);

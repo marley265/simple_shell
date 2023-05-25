@@ -19,14 +19,10 @@ void prompt(general_t *info)
 char *read_prompt()
 {
 	char *buffer;
-	int read;
-	size_t size;
 
-	buffer = NULL;
+	buffer = _getline();
 
-	read = getline(&buffer, &size, stdin);
-
-	if (read == EOF)
+	if (buffer == NULL)
 	{
 		free_pointer((void *) buffer);
 		return (NULL);

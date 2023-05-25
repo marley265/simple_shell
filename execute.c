@@ -15,6 +15,7 @@ void execute(char *command, char **arguments, general_t *info, char *buff)
 	int status;
 	pid_t pid;
 
+
 	pid = fork();
 	if (pid < 0)
 	{
@@ -23,7 +24,7 @@ void execute(char *command, char **arguments, general_t *info, char *buff)
 	}
 	else if (pid == 0)
 	{
-		execve(command, arguments, environ);
+		if (execvp(command, arguments) == -1)
 		perror("./sh");
 
 		free_double_pointer((void *) arguments);
