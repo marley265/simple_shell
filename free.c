@@ -1,5 +1,5 @@
 #include "memory.h"
-
+#include <stdlib.h>
 /**
  * free_memory_p - Free a pointer
  *
