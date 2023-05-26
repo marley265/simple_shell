@@ -42,26 +42,25 @@ alias_t *add_alias_end(alias_t **head, char *name, char *value)
  */
 struct list_s *add_node_end(list_t **head, char *dir)
 {
-        struct list_s *new_node = malloc(sizeof(struct list_s));
-        struct list_s *last = NULL;
+	struct list_s *new_node = malloc(sizeof(struct list_s));
+	struct list_s *last = NULL;
 
-        if (!new_node)
-                return NULL;
+	if (!new_node)
+		return (NULL);
 
-        new_node->dir = dir;
-        new_node->next = NULL;
+	new_node->dir = dir;
+	new_node->next = NULL;
 
-        if (*head)
-        {
-                last = *head;
-                while (last->next != NULL)
-                        last = last->next;
-                last->next = new_node;
-        }
-        else
-                *head = new_node;
-
-        return new_node;
+	if (*head)
+	{
+		last = *head;
+		while (last->next != NULL)
+			last = last->next;
+		last->next = new_node;
+	}
+	else
+		*head = new_node;
+	return (new_node);
 }
 /**
  *free_alias_list - frees the alias_t linked lists
@@ -88,13 +87,13 @@ void free_alias_list(alias_t *head)
  */
 void free_list(list_t *head)
 {
-        list_t *next;
+	list_t *next;
 
-        while (head)
-        {
-                next = head->next;
-                free(head->dir);
-                free(head);
-                head = next;
-        }
+	while (head)
+	{
+		next = head->next;
+		free(head->dir);
+		free(head);
+		head = next;
+	}
 }

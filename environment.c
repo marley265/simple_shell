@@ -52,47 +52,33 @@ char *_getenv(const char *name)
  * @info: General info about the shell (from general_t)
  * Return: on success (string pointer to reqested path) else (NULL)
  */
-char *which(char *filename, general_t *info)
+char *which(char *filename)
 {
 	char *path;
 	char *temp_path;
 	char *token;
-	char *slash;
-	int size;
 
-	(void) info;
-
-	path = _getenv("PATH");
+	path = getenv("PATH");
 	if (path == NULL)
 		return (NULL);
 
 	token = strtok(path, ":");
-
-	size = _strlen(filename) + 2;
-	slash = malloc(size * sizeof(char));
-	slash = _strcpy(slash, "/");
-	slash = _strcat(slash, filename);
-
 	while (token != NULL)
 	{
-		temp_path = malloc(_strlen(token) + size);
-		temp_path = _strcpy(temp_path, token);
-		temp_path = _strcat(temp_path, slash);
+		temp_path = malloc(_strlen(token) + _strlen(filename) + 2);
+		temp_path = strcpy(temp_path, token);
+		temp_path = strcat(temp_path, "/");
+		temp_path = strcat(temp_path, filename);
 
 		if (access(temp_path, X_OK) == 0)
 		{
-			free(slash);
-			free(path);
 			return (temp_path);
 		}
 		token = strtok(NULL, ":");
 
 		free(temp_path);
+
 	}
-
-	free(path);
-	free(slash);
-
 	return (NULL);
 }
 

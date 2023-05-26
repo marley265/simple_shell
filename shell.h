@@ -58,7 +58,7 @@ int is_file(char *command);
 
 /* environment.c */
 char *_getenv(const char *name);
-char *which(char *filename, general_t *info);
+char *which(char *filename);
 void is_current_path(char *path, general_t *info);
 void get_full_env(void);
 

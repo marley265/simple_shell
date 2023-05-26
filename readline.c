@@ -28,7 +28,7 @@ char *_getline(void)
 		if (c == EOF || c == '\n')
 		{
 			buffer[i] = '\0';
-			return buffer;
+			return (buffer);
 		}
 		else
 		{
