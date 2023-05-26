@@ -14,6 +14,18 @@
 /* Entry point of the shell */
 void start(general_t *info);
 
+/* aliases.c */
+int hsh_alias(char **cmd, char __attribute__((__unused__)) **arguments);
+void set_alias(char *var_name, char *value);
+void print_alias(alias_t *alias);
+char **replace_aliases(char **cmd);
+
+/* lists.c */
+void free_list(list_t *head);
+void free_alias_list(alias_t *head);
+list_t *add_node_end(list_t **head, char *dir);
+alias_t *add_alias_end(alias_t **head, char *name, char *value);
+
 /* readline.c */
 char *_getline(void);
 
@@ -26,7 +38,7 @@ void bin_exit(general_t *info, char **arguments);
 int number_controller(general_t *info, char *number);
 
 /* cd.c */
-void bin_cd(general_t *info, char **arguments);
+int bin_cd(general_t *info, char **arguments);
 
 /* env.c */
 void bin_env(general_t *info, char **arguments);
@@ -108,4 +120,7 @@ char *replace_value(general_t *info, int *index, char *string);
 /* patterns_replacer.c */
 char *replacement(general_t *info, int *index, char *string);
 char *replace_env(general_t *info, char *environment);
+
+/* alias.c */
+
 #endif

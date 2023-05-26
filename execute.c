@@ -25,7 +25,7 @@ void execute(char *command, char **arguments, general_t *info, char *buff)
 	else if (pid == 0)
 	{
 		if (execvp(command, arguments) == -1)
-		perror("./sh");
+		perror("execve");
 
 		free_double_pointer((void *) arguments);
 

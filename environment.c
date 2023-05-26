@@ -79,7 +79,7 @@ char *which(char *filename, general_t *info)
 		temp_path = _strcpy(temp_path, token);
 		temp_path = _strcat(temp_path, slash);
 
-		if (is_executable(temp_path) == PERMISSIONS)
+		if (access(temp_path, X_OK) == 0)
 		{
 			free(slash);
 			free(path);

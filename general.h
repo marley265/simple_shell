@@ -56,4 +56,18 @@ typedef struct __attribute__((__packed__))
 	void (*func)(general_t *info, char **arguments);
 } builtin_t;
 
+typedef struct alias_s
+{
+	char *name;
+	char *value;
+	struct alias_s *next;
+}alias_t;
+
+typedef struct list_s
+{
+    char *dir;
+    struct list_s *next;
+} list_t;
+/* global aliases linked list */
+alias_t *aliases;
 #endif
