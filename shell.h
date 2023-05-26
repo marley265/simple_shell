@@ -15,7 +15,7 @@
 void start(general_t *info);
 
 /* aliases.c */
-int hsh_alias(char **cmd, char __attribute__((__unused__)) **arguments);
+int hsh_alias(char **cmd);
 void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
 char **replace_aliases(char **cmd);
