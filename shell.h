@@ -1,6 +1,7 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#define LINE_BUFSIZE 1024;
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -12,7 +13,6 @@
 /* Entry point of the shell */
 void start(general_t *info);
 
-<<<<<<< HEAD
 /* aliases.c */
 int hsh_alias(char **cmd);
 void set_alias(char *var_name, char *value);
@@ -28,8 +28,6 @@ alias_t *add_alias_end(alias_t **head, char *name, char *value);
 /* readline.c */
 char *_getline(void);
 
-=======
->>>>>>> parent of c6f0606... _getline implementation
 /* builtins.c */
 int builtins(general_t *info, char **arguments);
 int check_builtin(general_t *info, char **arguments);
